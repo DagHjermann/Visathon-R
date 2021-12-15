@@ -1,0 +1,95 @@
+---
+title: "01_First_try"
+author: "DHJ"
+date: "13 12 2021"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    keep_md: true   
+---
+
+
+## Packages 
+```{r setup, include=FALSE}
+
+library(ggplot2)       # plotting
+library(dplyr)         # group_by, summarise, %>% and all that
+library(tidyr)         # for function 'pivot_wider'
+library(janitor)       # for function 'clean_names'  
+library(ggeasy)        # for function 'easy_rotate_labels'  
+library(visreg)        # for function 'visreg' 
+library(ggrepel)       # for function 'geom_text_repel'
+library(RColorBrewer)  # for color scales
+library(sf)            # reading, making and writing maps  
+
+# install.packages("recmap")
+# library(recmap)
+
+knitr::opts_chunk$set(results = 'hold')   # output all the results from a chunk together
+
+```
+
+### Function for displaying colors  
+```{r}
+display_col <- function(colors){
+  n <- length(colors)
+  image(1:n, 1, as.matrix(1:n), col = colors)
+}
+```
+
+
+## Data set 'Food'  
+
+* Denoted as data set ´dat1´   
+
+```{r, fig.width=9, fig.height=12}
+
+dat1 <- read.csv("Env_Impact_Food_Production/Food_Production.csv") %>%
+  clean_names()
+
+tibble(dat1)
+
+# dat1 %>%
+#   pivot_longer(-food_product) %>%
+#   ggplot(aes(x = food_product, fill = name, y = value)) +
+#   geom_col()
+
+```
+
+## Data set 'GreenhouseGas'  
+
+* Denoted as data set ´dat2´   
+
+```{r}
+
+dat2 <- read.csv("GreenhouseGas/GHG-Emissions-by-sector.csv") %>%
+  clean_names()
+
+tibble(dat2)
+
+```
+
+
+## Data set 'Env_Dataset_UNdata' CO2 emissions    
+
+* Denoted as data set ´dat3a´   
+
+```{r, fig.width=9, fig.height=9}
+
+dat3a <- read.csv("Env_Dataset_UNdata/Carbon Dioxide Emission Estimates.csv") %>%
+  clean_names()
+
+dat3a$series %>% table()  
+
+dat3a %>%
+  filter(series == "Emissions per capita (metric tons of carbon dioxide)") %>%
+  ggplot(aes(year, value)) + 
+  geom_point() +
+  geom_line() +
+  facet_wrap(vars(co2_emission_estimates)) +
+  easy_rotate_labels("x", angle = -30)
+  
+
+```
+
