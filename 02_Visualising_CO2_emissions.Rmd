@@ -1,5 +1,5 @@
 ---
-title: "01_First_try"
+title: "Visualising CO2 emissions"
 author: "DHJ"
 date: "13 12 2021"
 output: 
@@ -9,6 +9,12 @@ output:
     keep_md: true   
 ---
 
+*Note*: to make the maps, you need to download a shapefile from https://www.naturalearthdata.com/    
+
+* Either use [this link](https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip)   
+
+* Or go to the [downloads page](https://www.naturalearthdata.com/downloads) and follow this path:   
+    - Medium scale data, 1:50m -> Cultural -> Admin 0 – Countries
 
 ## Packages 
 ```{r setup, include=FALSE}
