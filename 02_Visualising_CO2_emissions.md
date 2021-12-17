@@ -532,7 +532,7 @@ dat3a_2017 %>%
     x = "Population size (1975 = 100)",
     y = "CO2 per capita (1975 = 100)",
     title = "2017 emissions + population, scaled by 1975 values (1975 = 100)",
-    subtitle = "Note: log scale on both axes. The 10 largest emittors with 1975 data are shown."
+    subtitle = "Note: log scale on both axes. Text shows the 10 largest emittors + some other extremes"
   )
 ```
 
@@ -542,7 +542,7 @@ dat3a_2017 %>%
 # hjust = 0, nudge_x = 0.01, 
 ```
 
-### Plot scaled emissions + population for 2017   
+### Plot unscaled emissions + population for 2017   
 
 ```r
 # Find intervals for color scale 
@@ -582,10 +582,10 @@ dat3a_2017 %>%
     box.padding = .6, point.padding = 0.5, min.segment.length = 0, nudge_x = 0.15, nudge_y = 0.05
   ) +
   labs(
-    x = "Population size (1975 = 100)",
-    y = "CO2 per capita (1975 = 100)",
+    x = "Population size (millions)",
+    y = "CO2 per capita (tons)",
     title = "2017 emissions + population, absolute values",
-    subtitle = "Note: log scale on both axes. The 10 largest emittors with 1975 data are shown."
+    subtitle = "Note: log scale on both axes. Text shows the 10 largest emittors + some other extremes"
   )
 ```
 
